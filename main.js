@@ -1,9 +1,8 @@
-let cleintes;
+// Definir una variable para clientes
+let clientes;
 
-cleintes = "carlos";
-
-console.log(cleintes);
-
+clientes = "Carlos";
+console.log(clientes);
 
 // Tipo de dato Number
 let edad = 25;
@@ -18,8 +17,6 @@ let esEstudiante = true;
 console.log("Edad:", edad);
 console.log("Nombre:", nombre);
 console.log("¿Es estudiante?", esEstudiante);
-
-
 
 // Array para almacenar los productos del inventario
 let inventario = [];
@@ -37,21 +34,30 @@ function agregarProducto() {
     let cantidad = parseInt(prompt("Introduce la cantidad del producto:"));
     let precio = parseFloat(prompt("Introduce el precio del producto:"));
 
+    // Validar si los datos son correctos
+    if (!nombre || isNaN(cantidad) || cantidad <= 0 || isNaN(precio) || precio <= 0) {
+        alert("Todos los campos son obligatorios y deben ser válidos.");
+        return;
+    }
+
     let nuevoProducto = new Producto(nombre, cantidad, precio);
     inventario.push(nuevoProducto);
 
     alert("Producto agregado al inventario.");
+    console.log("Producto agregado:", nuevoProducto);
 }
 
 // Función para eliminar un producto del inventario
 function eliminarProducto() {
     let nombre = prompt("Introduce el nombre del producto a eliminar:");
 
+    // Buscar el producto en el inventario
     let indice = inventario.findIndex(producto => producto.nombre.toLowerCase() === nombre.toLowerCase());
 
     if (indice !== -1) {
         inventario.splice(indice, 1);
         alert("Producto eliminado del inventario.");
+        console.log("Producto eliminado:", nombre);
     } else {
         alert("Producto no encontrado.");
     }
@@ -64,7 +70,7 @@ function mostrarInventario() {
     } else {
         let inventarioList = "Inventario:\n";
         inventario.forEach(producto => {
-            inventarioList += `Nombre: ${producto.nombre}, Cantidad: ${producto.cantidad}, Precio: $${producto.precio.toFixed(2)}\n`;
+            inventarioList += `\nNombre: ${producto.nombre}\nCantidad: ${producto.cantidad}\nPrecio: $${producto.precio.toFixed(2)}\n--------------------\n`;
         });
         alert(inventarioList);
     }
@@ -99,4 +105,3 @@ function ejecutarSimulador() {
 
 // Llamada a la función principal para ejecutar el simulador
 ejecutarSimulador();
-
