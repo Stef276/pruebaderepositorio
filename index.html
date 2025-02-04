@@ -1,12 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Simulador de Inventario</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <h1>Simulador de inventario</h1>
-<script src="main.js"></script>
+    <h1>Simulador de Inventario</h1>
+
+    <!-- Formulario para agregar productos -->
+    <div id="formulario">
+        <input type="text" id="nombreProducto" placeholder="Nombre del producto">
+        <input type="number" id="cantidadProducto" placeholder="Cantidad del producto">
+        <input type="number" id="precioProducto" placeholder="Precio del producto" step="0.01">
+        <button id="btnAgregar">Agregar Producto</button>
+        <p id="mensajeError" class="error"></p> <!-- Mensaje de error -->
+    </div>
+
+    <h2>Inventario</h2>
+    <div id="inventarioList"></div>
+
+    <script src="js/main.js"></script>
 </body>
 </html>
