@@ -7,6 +7,7 @@ const cantidadInput = document.getElementById("cantidadProducto");
 const precioInput = document.getElementById("precioProducto");
 const inventarioList = document.getElementById("inventarioList");
 const mensajeError = document.getElementById("mensajeError");
+const btnMostrar = document.getElementById("btnMostrar");
 
 // Mostrar inventario en el DOM
 function mostrarInventario() {
@@ -76,9 +77,18 @@ function eliminarProducto(event) {
     mostrarInventario(); // Actualizar visualización del inventario
 }
 
+// Evento del botón "Ver Inventario"
+btnMostrar.addEventListener("click", function() {
+    // Mostrar inventario solo si no está vacío
+    if (inventario.length > 0) {
+        mostrarInventario();
+    } else {
+        inventarioList.innerHTML = "<p>El inventario está vacío.</p>";
+    }
+});
+
 // Event listeners
 document.getElementById("btnAgregar").addEventListener("click", agregarProducto);
-document.getElementById("btnMostrar").addEventListener("click", mostrarInventario);
 
 // Mostrar inventario al cargar la página
 mostrarInventario();
